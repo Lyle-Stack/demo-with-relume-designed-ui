@@ -63,16 +63,16 @@
     @apply border-border;
   }
   body {
-    @apply font-custom bg-background text-foreground;
+    @apply font-custom bg-background text-foreground antialiased;
   }
   h1,
   h2,
   h3,
   h4 {
-    @apply font-title;
+    @apply font-title text-balance;
   }
   h1:not(.prose *) {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+    @apply scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-8xl;
   }
   h2:not(.prose *) {
     @apply mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
@@ -89,9 +89,9 @@
   blockquote:not(.prose *) {
     @apply mt-6 border-l-2 pl-6 italic;
   }
-  a:not(.prose *) {
+  /* a:not(.prose *) {
     @apply font-medium text-primary underline underline-offset-4;
-  }
+  } */
   ul:not(.prose *) {
     @apply my-6 ml-6 list-disc [&>li]:mt-2;
   }
