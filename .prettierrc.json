@@ -1,0 +1,30 @@
+{
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "embeddedLanguageFormatting": "auto",
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "ignore",
+  "jsxSingleQuote": false,
+  "printWidth": 79,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "semi": true,
+  "singleAttributePerLine": false,
+  "singleQuote": false,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "useTabs": false,
+  "vueIndentScriptAndStyle": false,
+  "importOrderTypeScriptVersion": "5.0.0",
+  "iniSpaceAroundEquals": true,
+  "jsonRecursiveSort": true,
+  "multilineArraysWrapThreshold": 2,
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "overrides": [
+    {
+      "files": [".npmrc", ".env", ".env.*"],
+      "options": { "parser": "ini" }
+    }
+  ]
+}
