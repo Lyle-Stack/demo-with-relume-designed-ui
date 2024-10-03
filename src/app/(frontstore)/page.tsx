@@ -4,6 +4,7 @@ import { Benifits } from "@/components/(frontstore)/Benifits";
 import { HowItWork } from "@/components/(frontstore)/HowItWork";
 import { Faqs } from "@/components/(frontstore)/Faqs";
 import { Stories } from "@/components/(frontstore)/Stories";
+import { CTA } from "@/components/(frontstore)/CallToAction";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <HowItWork />
       <Faqs />
       <Stories />
+      <CTA />
     </div>
   );
 }
