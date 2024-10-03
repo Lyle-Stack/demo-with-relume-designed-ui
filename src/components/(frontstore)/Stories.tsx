@@ -26,7 +26,7 @@ export const Stories = (props: Partial<StoriesProps>) => {
   };
 
   const scrollSection = useRef<HTMLDivElement>(null);
-  const [activeSection, setActiveSection] = useState(0);
+  const [activeSection, setActiveSection] = useState(-1);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +36,12 @@ export const Stories = (props: Partial<StoriesProps>) => {
       const currentScrollPosition =
         viewHeight / 2 - target.getBoundingClientRect().top;
       const currentSection = Math.floor(currentScrollPosition / viewHeight);
-      setActiveSection(currentSection);
+
+      if (currentSection < 0) {
+        setActiveSection(-1);
+      } else {
+        setActiveSection(currentSection);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -54,6 +59,14 @@ export const Stories = (props: Partial<StoriesProps>) => {
                 {
                   "opacity-100": activeSection === index,
                   "opacity-0": activeSection !== index,
+                },
+                {
+                  "opacity-100": index === 0 && activeSection < 0,
+                },
+                {
+                  "opacity-100":
+                    index === contents.length - 1 &&
+                    activeSection >= contents.length,
                 },
                 className,
               )}
@@ -101,7 +114,12 @@ export const Stories = (props: Partial<StoriesProps>) => {
                     "fixed inset-0 -z-10 bg-[#e5e5e5] transition-opacity duration-300",
                     {
                       "opacity-100": activeSection % 2 === 0,
-                      "opacity-0": activeSection % 2 !== 0,
+                    },
+                    {
+                      "opacity-0":
+                        activeSection < 0 ||
+                        activeSection >= contents.length ||
+                        activeSection % 2 === 1,
                     },
                   )}
                 />
