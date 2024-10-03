@@ -35,11 +35,11 @@ export const Benifits = (props: Partial<BenifitsProps>) => {
   const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container relative grid grid-cols-1 items-start gap-y-8 md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
         <div className="md:sticky md:left-0 md:top-0 md:-mt-24 md:pb-10 md:pt-24 lg:-mt-28 lg:pt-28">
           <span className="lead mb-3 md:mb-4">{tagline}</span>
-          <h1 className="rb-5 mb-5 md:mb-6">{heading}</h1>
+          <h1 className="mb-5 md:mb-6">{heading}</h1>
           <div className="mt-6 flex items-center gap-4 md:mt-8">
             {buttons.map(({ children, ...props }, index) => (
               <Button key={`benifits-button-${index}`} {...props}>
