@@ -5,7 +5,7 @@ import { Button, ButtonProps, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 
-type HeaderProps = {
+type HeroProps = {
   eyebowExternalLink: React.ComponentPropsWithoutRef<"a"> & { title: string };
   heading: string;
   description: string;
@@ -14,7 +14,7 @@ type HeaderProps = {
     Required<Pick<HTMLImageElement, "src" | "alt">>;
 };
 
-export const Header = (props: Partial<HeaderProps>) => {
+export const Hero = (props: Partial<HeroProps>) => {
   const {
     eyebowExternalLink: {
       title: eyebowTitle,
@@ -26,7 +26,7 @@ export const Header = (props: Partial<HeaderProps>) => {
     buttons,
     image: { className: imageClassName, ...imageProps },
   } = {
-    ...HeaderDefaults,
+    ...HeroDefaults,
     ...props,
   };
   return (
@@ -72,7 +72,7 @@ export const Header = (props: Partial<HeaderProps>) => {
   );
 };
 
-const HeaderDefaults: HeaderProps = {
+const HeroDefaults: HeroProps = {
   eyebowExternalLink: {
     title: "Source Code",
   },
