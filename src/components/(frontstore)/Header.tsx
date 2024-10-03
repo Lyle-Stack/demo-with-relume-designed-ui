@@ -78,7 +78,7 @@ const HeaderDefaults: HeaderProps = {
   },
   heading: "React.js & Next.js 14 App Route 的電商範例",
   description:
-    "我正在建立一個，使用 Next.js 14 的網頁版電商，使用開放的原始碼，且公開開放專案內容。任何人有興趣，可以一起加入，想要使用的也可以免費使用（無果可以，告訴我你使用了）。",
+    "我正在建立一個，使用 Next.js 14 的網頁版電商，使用開放的原始碼，且公開開放專案內容。任何人有興趣，可以一起加入，想要使用的也可以免費使用（如果可以，告訴我你使用了）。",
   buttons: [
     { title: "進入 Demo", onClick: () => {} },
     { title: "示範用假按鈕", variant: "secondary" },

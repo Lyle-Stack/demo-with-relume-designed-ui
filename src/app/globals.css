@@ -102,12 +102,12 @@
     @apply text-sm font-medium leading-none;
   }
   span.lead:not(.prose *) {
-    @apply text-xl text-muted-foreground;
+    @apply inline-block text-xl text-muted-foreground;
   }
   span.large:not(.prose *) {
-    @apply text-lg font-semibold;
+    @apply inline-block text-lg font-semibold;
   }
   span.mute:not(.prose *) {
-    @apply text-sm text-muted-foreground;
+    @apply inline-block text-sm text-muted-foreground;
   }
 }
