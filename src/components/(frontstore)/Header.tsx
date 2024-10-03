@@ -1,29 +1,34 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
 
 import { Button, ButtonProps, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 
-type ImageProps = {
-  src: string;
-  alt?: string;
-};
-
-type Props = {
+type HeaderProps = {
+  eyebowExternalLink: React.ComponentPropsWithoutRef<"a"> & { title: string };
   heading: string;
   description: string;
-  buttons: ButtonProps[];
-  image: ImageProps;
+  buttons: (ButtonProps & { title: string })[];
+  image: React.ComponentPropsWithoutRef<"img"> &
+    Required<Pick<HTMLImageElement, "src" | "alt">>;
 };
 
-export type HeaderProps = React.ComponentPropsWithoutRef<"section"> &
-  Partial<Props>;
-
-export const Header = (props: HeaderProps) => {
-  const { heading, description, buttons, image } = {
+export const Header = (props: Partial<HeaderProps>) => {
+  const {
+    eyebowExternalLink: {
+      title: eyebowTitle,
+      className: eyebowClassName,
+      ...eyebowProps
+    },
+    heading,
+    description,
+    buttons,
+    image: { className: imageClassName, ...imageProps },
+  } = {
     ...HeaderDefaults,
     ...props,
-  } as Props;
+  };
   return (
     <section className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
@@ -33,30 +38,32 @@ export const Header = (props: HeaderProps) => {
               <a
                 className={cn(
                   buttonVariants({ variant: "secondary", size: "sm" }),
+                  eyebowClassName,
                 )}
                 target="_blank"
                 // TODO: change to github link
                 href="#"
+                {...eyebowProps}
               >
-                開源電子商務
+                {eyebowTitle}
                 <ExternalLink className="ml-2 size-3" />
               </a>
               <h1 className="mb-2.5 mt-3 md:mb-6 md:mt-3">{heading}</h1>
               <p className="text-balance">{description}</p>
               <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
-                {buttons.map((button, index) => (
-                  <Button key={`${button.title}-${index}`} {...button}>
-                    {button.title}
+                {buttons.map(({ title, ...buttonPrpos }, index) => (
+                  <Button key={`${title}-${index}`} {...buttonPrpos}>
+                    {title}
                   </Button>
                 ))}
               </div>
             </div>
           </div>
           <div>
+            {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <img
-              src={image.src}
-              className="size-full object-cover"
-              alt={image.alt}
+              className={cn("size-full object-cover", imageClassName)}
+              {...imageProps}
             />
           </div>
         </div>
@@ -65,11 +72,17 @@ export const Header = (props: HeaderProps) => {
   );
 };
 
-export const HeaderDefaults: HeaderProps = {
+const HeaderDefaults: HeaderProps = {
+  eyebowExternalLink: {
+    title: "Source Code",
+  },
   heading: "React.js & Next.js 14 App Route 的電商範例",
   description:
     "我正在建立一個，使用 Next.js 14 的網頁版電商，使用開放的原始碼，且公開開放專案內容。任何人有興趣，可以一起加入，想要使用的也可以免費使用（無果可以，告訴我你使用了）。",
-  buttons: [{ title: "Button" }, { title: "Button", variant: "secondary" }],
+  buttons: [
+    { title: "進入 Demo", onClick: () => {} },
+    { title: "示範用假按鈕", variant: "secondary" },
+  ],
   image: {
     src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
     alt: "placeholder image",
